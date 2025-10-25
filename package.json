@@ -1,0 +1,17 @@
+{
+  "name": "nice-tron",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/single-line-log": "^1.1.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.18",
+    "single-line-log": "^1.1.2",
+    "tronweb": "^6.0.4"
+  }
+}
