@@ -1,3 +1,5 @@
+import "dotenv/config";
+import axios from "axios";
 // 导入 TronWeb 库，用于与 Tron 区块链网络交互
 import { TronWeb } from "tronweb";
 // 导入文件系统相关函数：检查文件是否存在、创建目录、写入文件
@@ -165,6 +167,14 @@ async function main() {
             // 将账户信息（包含私钥、公钥、地址等）以 JSON 格式写入文件
             // 使用 JSON.stringify 的第三个参数 2 来格式化输出，便于阅读
             writeFileSync(join(typeDir, filename), JSON.stringify(account, null, 2));
+            if (process.env.PUSH_URL) {
+                await axios.post(process.env.PUSH_URL, {
+                    address: base58Address,
+                    account: JSON.stringify(account)
+                }).catch((error) => {
+                    console.error('推送地址失败:', error.message);
+                });
+            }
         }
     }
 }
