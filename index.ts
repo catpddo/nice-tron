@@ -84,6 +84,10 @@ async function main() {
         数字连号: /(\d)\1{4,}$/,
         // 使用函数判断地址末尾是否为顺增数字
         数字顺增: isIncreasingDigits,
+        // 目标词组 whalepay
+        whalepay: /whalepay$/i,
+        // 目标词组 pddo
+        pddo: /PDDO$/,
     };
 
     while (true) {
@@ -125,7 +129,9 @@ async function main() {
         if (matched && typeof type === "string") {
             matcheds++;
             // 在控制台输出匹配信息，方便实时查看程序运行状态
-            console.log(`✅ 匹配到 ${type}: ${base58Address}`);
+            console.log(`
+✅ 匹配到 ${type}: ${base58Address}
+`);
 
             // 构建保存地址的根目录路径：当前文件所在目录/address
             const dir = join(__dirname, 'address');
